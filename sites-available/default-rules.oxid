@@ -1,20 +1,4 @@
-# Virtual Host configuration for DOMAIN.de
-#
-
-server {
-  listen 80 default_server;
-  listen [::]:80 default_server;
-
-  # absoluter Pfad zum Web-Root-Verzeichnis
-  root /var/www;
-
-  index index.php index.html index.htm;
-
-  server_name localhost;
   set $script_name $fastcgi_script_name;
-  # PHP FastCGI ueber Socket
-  #set $fcgi_php unix:/var/run/php5-fpm.sock;
-  set $fcgi_php 127.0.0.1:9000;
 
   # Im Admin und Setup wird kein Rewrite auf die oxseo.php benoetigt
   location ~ ^/(setup|admin)/?$ {
@@ -69,4 +53,4 @@ server {
     }
     include fastcgi_params.oxid;
   }
-}
+
